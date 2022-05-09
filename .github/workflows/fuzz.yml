@@ -58,18 +58,17 @@ jobs:
        id: build
        uses: google/clusterfuzzlite/actions/build_fuzzers@v1
        with:
-        github-token: ${{ secrets.TOKEN }}
-        oss-fuzz-project-name: 'Dvpwa'
+        github-token: ${{ secrets.TOKEN }}    
         language: python
         dry-run: false
         sanitizer: ${{ matrix.sanitizer }}
         upload-build: true
+        keep-unaffected-fuzz-targets: true
         
      - name: Run Fuzzers (${{ matrix.sanitizer }})
        uses: google/clusterfuzzlite/actions/run_fuzzers@v1
        with:
         github-token: ${{ secrets.TOKEN }}
-        oss-fuzz-project-name: 'Dvpwa'
         language: python
         fuzz-seconds: 600
         mode: 'batch'
@@ -86,6 +85,8 @@ jobs:
       uses: google/clusterfuzzlite/actions/build_fuzzers@v1
       with:
         sanitizer: coverage
+        upload-build: true
+        keep-unaffected-fuzz-targets: true
         
     - name: Run Fuzzers
       id: run
@@ -95,6 +96,8 @@ jobs:
         fuzz-seconds: 600
         mode: 'coverage'
         sanitizer: 'coverage'
+        report-unreproducible-crashes: true
+        keep-unaffected-fuzz-targets: true
         
     - name: Upload Crash
       uses: actions/upload-artifact@v1
