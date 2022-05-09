@@ -66,6 +66,7 @@ jobs:
         oss-fuzz-project-name: 'Dvpwa'
         language: python
         fuzz-seconds: 600
+        ignore_crashes: 1
         mode: 'batch'
         dry-run: false
         sanitizer: ${{ matrix.sanitizer }}
