@@ -12,9 +12,7 @@ on:
        
 
 
-  schedule:
-     - cron: '0 0/1 * * *'  # Every 6th hour. Change this to whatever is suitable.
-
+  
 permissions:
   contents: read
 
@@ -46,35 +44,38 @@ jobs:
   
   
   Fuzzing:
-    runs-on: ubuntu-latest
-    concurrency:
+     runs-on: ubuntu-latest
+     concurrency:
       group: ${{ github.workflow }}-${{ matrix.sanitizer }}-${{ github.ref }}
       cancel-in-progress: true
-    strategy:
+     strategy:
         fail-fast: false
         matrix:
             sanitizer: [address]
-    steps:
-    - uses: actions/checkout@v3
-    - name: Build Fuzzers (${{ matrix.sanitizer }})
-      id: build
-      uses: google/clusterfuzzlite/actions/build_fuzzers@v1
-      with:
+     steps:
+     - uses: actions/checkout@v3
+     - name: Build Fuzzers (${{ matrix.sanitizer }})
+       id: build
+       uses: google/clusterfuzzlite/actions/build_fuzzers@v1
+       with:
         github-token: ${{ secrets.TOKEN }}
         oss-fuzz-project-name: 'Dvpwa'
         language: python
         dry-run: false
         sanitizer: ${{ matrix.sanitizer }}
+        upload-build: true
         
-    - name: Run Fuzzers (${{ matrix.sanitizer }})
-      uses: google/clusterfuzzlite/actions/run_fuzzers@v1
-      with:
+     - name: Run Fuzzers (${{ matrix.sanitizer }})
+       uses: google/clusterfuzzlite/actions/run_fuzzers@v1
+       with:
         github-token: ${{ secrets.TOKEN }}
         oss-fuzz-project-name: 'Dvpwa'
         language: python
         fuzz-seconds: 600
-        mode: 'prune'
+        mode: 'batch'
         dry-run: false
+        report-unreproducible-crashes: true
+        keep-unaffected-fuzz-targets: true
         sanitizer: ${{ matrix.sanitizer }}
         
   Coverage:
@@ -85,6 +86,7 @@ jobs:
       uses: google/clusterfuzzlite/actions/build_fuzzers@v1
       with:
         sanitizer: coverage
+        
     - name: Run Fuzzers
       id: run
       uses: google/clusterfuzzlite/actions/run_fuzzers@v1
