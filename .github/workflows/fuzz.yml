@@ -11,14 +11,17 @@ on:
     branches: [ master ]
        
 
+
+  schedule:
+     - cron: '0 0/1 * * *'  # Every 6th hour. Change this to whatever is suitable.
+
 permissions:
   contents: read
 
 jobs:
   build:
 
-    runs-on: ubuntu-latest
-    
+    runs-on: ubuntu-latest    
      
     steps:
     - uses: actions/checkout@v3
@@ -44,7 +47,6 @@ jobs:
   
   Fuzzing:
     runs-on: ubuntu-latest
-    if: github.repository != 'systemd/systemd' || github.event.pull_request.user.login == 'dependabot[bot]'
     concurrency:
       group: ${{ github.workflow }}-${{ matrix.sanitizer }}-${{ github.ref }}
       cancel-in-progress: true
@@ -71,7 +73,7 @@ jobs:
         oss-fuzz-project-name: 'Dvpwa'
         language: python
         fuzz-seconds: 600
-        mode: 'code-change'
+        mode: 'prune'
         dry-run: false
         sanitizer: ${{ matrix.sanitizer }}
         
