@@ -65,6 +65,12 @@ jobs:
         upload-build: true
         keep-unaffected-fuzz-targets: true
         
+     - name: Scan Report
+       uses: actions/upload-artifact@v2
+       with:
+          name: scan-report
+          path: 'report.html' 
+        
      - name: Run Fuzzers (${{ matrix.sanitizer }})
        uses: google/clusterfuzzlite/actions/run_fuzzers@v1
        with:
