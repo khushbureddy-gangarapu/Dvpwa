@@ -119,6 +119,8 @@ jobs:
 
       - name: Install dependencies
         run: yarn
+      - name: Jest installation
+        run: install jest-cli npm install --save-dev jest-cli
           
 
       - name: Run test coverage
