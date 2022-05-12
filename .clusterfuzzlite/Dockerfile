@@ -6,6 +6,7 @@ WORKDIR Dvpwa
 COPY .clusterfuzzlite/build.sh $SRC/
 
 RUN pip3 install --upgrade pip
+RUN pip3 install coverage-conditional-plugin
 RUN pip3 install lz4 --force
 RUN pip3 install idna --force
 RUN pip3 install atheris --force
