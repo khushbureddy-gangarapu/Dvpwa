@@ -116,7 +116,7 @@ jobs:
       id: coverage_comment
       uses: ewjoachim/python-coverage-comment-action@v2
       with:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+          GITHUB_TOKEN: ${{ github.token }}
           VERBOSE: true
 
     - name: Store Pull Request comment to be posted
