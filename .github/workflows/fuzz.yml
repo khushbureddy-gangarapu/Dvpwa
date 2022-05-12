@@ -84,7 +84,7 @@ jobs:
         sanitizer: ${{ matrix.sanitizer }}
         
         # See later section on "Git repo for storage".
-        storage-repo: https://${{ secrets.TOKEN }}@github.com/Khushbureddy-gangarapu/Dvpwa.git
+        storage-repo: https://${{ secrets.TOKEN }}@github.com/khushbureddy-gangarapu/Dvpwa.git
         storage-repo-branch: master   # Optional. Defaults to "main"
         storage-repo-branch-coverage: gh-pages  # Optional. Defaults to "gh-pages".
         
@@ -110,7 +110,7 @@ jobs:
         mode: 'prune'
         # Optional but recommended.
         # See later section on "Git repo for storage".
-        storage-repo: https://${{ secrets.TOKEN }}@github.com/Khushbureddy-gangarapu/Dvpwa.git
+        storage-repo: https://${{ secrets.TOKEN }}@github.com/khushbureddy-gangarapu/Dvpwa.git
         storage-repo-branch: master   # Optional. Defaults to "main"
         storage-repo-branch-coverage: gh-pages  # Optional. Defaults to "gh-pages".
   
@@ -136,6 +136,6 @@ jobs:
         sanitizer: 'coverage'
         # Optional but recommended.
         # See later section on "Git repo for storage".
-        storage-repo: https://${{ secrets.TOKEN }}@github.com/Khushbureddy-gangarapu/Dvpwa.git
+        storage-repo: https://${{ secrets.TOKEN }}@github.com/khushbureddy-gangarapu/Dvpwa.git
         storage-repo-branch: master   # Optional. Defaults to "main"
         storage-repo-branch-coverage: gh-pages  # Optional. Defaults to "gh-pages".
