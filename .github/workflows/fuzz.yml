@@ -108,14 +108,14 @@ jobs:
   
   base_branch_cov:
     runs-on: ubuntu-latest
+    concurrency:
+      group: ${{ github.workflow }}-${{ matrix.sanitizer }}-${{ github.ref }}
+      cancel-in-progress: true 
     steps:
       - uses: actions/checkout@v2
         with:
-          ref: ${{ github.base_ref }}
-      - name: Use Node.js v16.11.0
-        uses: actions/setup-node@v1
-        with:
-          node-version: v16.11.0
+          ref: ${{ github.ref }}
+      
 
       - name: Install dependencies
         run: yarn
@@ -138,12 +138,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: base_branch_cov
     steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js v16.11.0
-        uses: actions/setup-node@v1
-        with:
-          node-version: v16.11.0
-
+     
       - name: Download code coverage report from base branch
         uses: actions/download-artifact@v2
         with:
