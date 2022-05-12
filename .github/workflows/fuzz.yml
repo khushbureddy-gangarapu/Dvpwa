@@ -130,7 +130,7 @@ jobs:
         run: yarn test --coverage
         
       - name: Run jest coverage
-        run: npm test -- --coverage
+        run: npm run test -- --coverage --watchAll=true
 
 
       - name: Upload code coverage for ref branch
@@ -160,8 +160,14 @@ jobs:
       - name: Run test coverage
         run: yarn test --coverage
         
+      - name: Jest installation
+        run: |
+             npm install --save-dev jest
+             yarn add --dev jest
+             npm install --save-dev jest babel-jest
+        
       - name: Run jest coverage
-        run: npm test -- --coverage
+        run: npm run test -- --coverage --watchAll=true
 
       #  Compares two code coverage files and generates report as a comment
       - name: Generate Code Coverage report
