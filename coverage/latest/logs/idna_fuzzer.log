@@ -3,12 +3,12 @@ WARNING: Failed to find function "__sanitizer_acquire_crash_state".
 WARNING: Failed to find function "__sanitizer_print_stack_trace".
 WARNING: Failed to find function "__sanitizer_set_death_callback".
 INFO: Running with entropic power schedule (0xFF, 100).
-INFO: Seed: 2957359756
-INFO:      111 files found in /github/workspace/cifuzz-corpus/idna_fuzzer
+INFO: Seed: 2834718812
+INFO:      155 files found in /github/workspace/cifuzz-corpus/idna_fuzzer
 INFO: -max_len is not provided; libFuzzer will not generate inputs larger than 4096 bytes
-INFO: seed corpus: files: 111 min: 1b max: 3143b total: 8785b rss: 41Mb
-#112	INITED cov: 298 ft: 868 corp: 111/8785b exec/s: 0 rss: 41Mb
-Done 114 in 0 second(s)
+INFO: seed corpus: files: 155 min: 1b max: 3143b total: 27130b rss: 39Mb
+#156	INITED cov: 301 ft: 885 corp: 124/9552b exec/s: 0 rss: 39Mb
+Done 158 in 0 second(s)
 INFO: Instrumentation complete.
 INFO: Instrumenting idna
 WARNING: It looks like this module is imported by a custom loader. Atheris has experimental support for this. However, it may be incompatible with certain libraries. If you experience unusual errors or poor coverage collection, try atheris.instrument_all() instead, add enable_loader_override=False to instrument_imports(), or file an issue on GitHub.
