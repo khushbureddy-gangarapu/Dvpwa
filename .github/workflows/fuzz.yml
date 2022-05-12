@@ -120,14 +120,14 @@ jobs:
       - name: Install dependencies
         run: yarn
       - name: Jest installation
-        run: install jest-cli npm install jest-cli
+        run: npm test -- --coverage
           
 
       - name: Run test coverage
         run: yarn test --coverage
         
       - name: Run jest coverage
-        run: yarn jest --coverage
+        run: npm test -- --coverage
 
 
       - name: Upload code coverage for ref branch
@@ -158,7 +158,7 @@ jobs:
         run: yarn test --coverage
         
       - name: Run jest coverage
-        run: yarn jest --coverage
+        run: npm test -- --coverage
 
       #  Compares two code coverage files and generates report as a comment
       - name: Generate Code Coverage report
