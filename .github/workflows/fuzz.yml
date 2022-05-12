@@ -109,9 +109,26 @@ jobs:
     runs-on: ubuntu-latest
     concurrency:
       group: ${{ github.workflow }}-${{ matrix.sanitizer }}-${{ github.ref }}
-      cancel-in-progress: true 
-    steps:    
-        - name: Upload coverage to Codecov
-          uses: codecov/codecov-action@v3
+      cancel-in-progress: true
+    steps:
+        - name: Coverage comment
+          id: coverage_comment
+          uses: ewjoachim/python-coverage-comment-action@v2
           with:
-            file: ./coverage.xml  
+            GITHUB_TOKEN: ${{ secrets.TOKEN }}
+            VERBOSE: true
+
+        -  name: Store Pull Request comment to be posted
+           uses: actions/upload-artifact@v2
+           if: steps.coverage_comment.outputs.COMMENT_FILE_WRITTEN == 'true'
+           with:
+            name: python-coverage-comment-action
+            path: python-coverage-comment-action.txt
+       
+    
+        - name: Post comment
+          uses: ewjoachim/python-coverage-comment-action@v2
+          if: github.event.workflow_run.event == 'pull_request' && github.event.workflow_run.conclusion == 'success'
+          with:
+            GITHUB_TOKEN: ${{ secrets.TOKEN }}
+            VERBOSE: true
