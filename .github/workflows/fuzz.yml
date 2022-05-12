@@ -120,8 +120,7 @@ jobs:
       - name: Install dependencies
         run: yarn
       - name: Jest installation
-        run: |
-             yarn install --save-dev jest babel-jest    
+        run: yarn add --dev jest 
 
      
         
@@ -157,8 +156,7 @@ jobs:
         run: yarn test --coverage
         
       - name: Jest installation
-        run: |
-             yarn install --save-dev jest babel-jest
+        run: yarn add --dev jest
         
       - name: Run jest coverage
         run: yarn run test -- --coverage --watchAll=true
