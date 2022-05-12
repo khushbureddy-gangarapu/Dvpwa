@@ -123,13 +123,11 @@ jobs:
         run: |
              npm install --save-dev jest
              yarn add --dev jest
-             npm install --save-dev jest babel-jest
-          
+             npm install --save-dev jest babel-jest    
 
-      - name: Run test coverage
-        run: yarn test --coverage
+     
         
-      - name: Run jest coverage
+      - name: Run test coverage
         run: npm run test -- --coverage --watchAll=true
 
 
