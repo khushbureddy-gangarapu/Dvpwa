@@ -1,0 +1,12 @@
+# Snyk schema
+---
+language:
+- python3
+packagemanager:
+- pip
+manifest:
+- requirements.txt
+severity-threshold:
+- high
+fail-on:
+- upgradable

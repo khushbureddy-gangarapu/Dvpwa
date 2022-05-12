@@ -1,0 +1,9 @@
+{
+  "name": "my-package",
+  "scripts": {
+    "collectCoverage": true,
+    "build": "",
+    "test": "jest --coverage",
+     "coverageReporters": ["json", "html"]
+  }
+}

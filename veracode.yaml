@@ -1,0 +1,6 @@
+# Veracode Property file
+
+---
+payload:
+- './**/*.py'
+exclude:

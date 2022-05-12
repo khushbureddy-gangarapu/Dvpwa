@@ -1,0 +1,3 @@
+panda
+numpy
+atheris==2.0.10

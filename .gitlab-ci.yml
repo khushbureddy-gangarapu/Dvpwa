@@ -1,0 +1,12 @@
+image: docker:v1
+
+before_script:
+  - docker login -u "gudevr" -p "Temper!2019558" registry.docker.nat.bt.com/harbor/
+
+build-master:
+  stage: build
+  script:
+    - docker build --pull -t "registry.docker.nat.bt.com/oss-fuzz/oss-fuzz-base/base-builder-python:v1" .
+    - docker push "registry.docker.nat.bt.com/oss-fuzz/oss-fuzz-base/base-builder-python:v1"
+  only:
+    - master
