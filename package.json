@@ -1,7 +1,9 @@
 {
   "name": "my-package",
   "scripts": {
-    "build": "babel src -d lib",
-    "test": "jest --coverage"
+    "collectCoverage": true,
+    "build": "gcr.io/oss-fuzz-base/base-builder-python:v1",
+    "test": "jest --coverage",
+     "coverageReporters": ["json", "html"]
   }
 }
