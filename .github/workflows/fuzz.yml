@@ -128,4 +128,12 @@ jobs:
           # If you use a different name, update COMMENT_FILENAME accordingly
           path: python-coverage-comment-action.txt   
 
-    
+    - name: Run tests & display coverage
+      if: github.event.workflow_run.event == 'pull_request' && github.event.workflow_run.conclusion == 'success'
+      
+     
+    - name: Post comment
+      uses: ewjoachim/python-coverage-comment-action@v2
+      with:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+          VERBOSE: true    
