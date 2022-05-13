@@ -29,3 +29,5 @@ RUN pip3 install coverage-conditional-plugin
 RUN pip3 install lz4 --force
 RUN pip3 install idna --force
 RUN pip3 install atheris --force
+RUN pip3 install numpy
+RUN pip3 install tf-nightly-cpu
