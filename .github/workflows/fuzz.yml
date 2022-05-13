@@ -84,12 +84,14 @@ jobs:
         sanitizer: ${{ matrix.sanitizer }}
         
         # See later section on "Git repo for storage".
-        storage-repo: https://${{ secrets.TOKEN }}@github.com/khushbureddy-gangarapu/Dvpwa.git
+        storage-repo: https://${{ secrets.TOKEN }}@github.com/khushbureddy-gangarapu/khushbureddy-gangarapu.github.io.git
         storage-repo-branch: master   # Optional. Defaults to "main"
         storage-repo-branch-coverage: gh-pages  # Optional. Defaults to "gh-pages".
         
   Pruning:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
     
     - name: Build Fuzzers
@@ -110,13 +112,16 @@ jobs:
         mode: 'prune'
         # Optional but recommended.
         # See later section on "Git repo for storage".
-        storage-repo: https://${{ secrets.TOKEN }}@github.com/khushbureddy-gangarapu/Dvpwa.git
+        storage-repo: https://${{ secrets.TOKEN }}@github.com/khushbureddy-gangarapu/khushbureddy-gangarapu.github.io.git
         storage-repo-branch: master   # Optional. Defaults to "main"
         storage-repo-branch-coverage: gh-pages  # Optional. Defaults to "gh-pages".
   
   
   Coverage:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
     steps:
     - name: Build Fuzzers
       id: build
@@ -136,6 +141,6 @@ jobs:
         sanitizer: 'coverage'
         # Optional but recommended.
         # See later section on "Git repo for storage".
-        storage-repo: https://${{ secrets.TOKEN }}@github.com/khushbureddy-gangarapu/Dvpwa.git
+        storage-repo: https://${{ secrets.TOKEN }}@github.com/khushbureddy-gangarapu/khushbureddy-gangarapu.github.io.git
         storage-repo-branch: master   # Optional. Defaults to "main"
         storage-repo-branch-coverage: gh-pages  # Optional. Defaults to "gh-pages".
