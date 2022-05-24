@@ -19,5 +19,4 @@ RUN apt-get update && apt-get install -y make autoconf automake libtool libdb-de
 RUN git clone --depth=1 https://github.com/vdukhovni/postfix Dvpwa
 COPY . $SRC/Dvpwa
 WORKDIR Dvpwa
-COPY build.sh $SRC/
-COPY *.c $SRC/
+COPY .clusterfuzzlite/build.sh .clusterfuzzlite/fuzz_mime.c .clusterfuzzlite/fuzz_tok822.c $SRC/ 
