@@ -1,11 +1,7 @@
-FROM gcr.io/oss-fuzz-base/base-builder-python:v1
-RUN apt-get update && apt-get install -y make autoconf automake libtool
-
+FROM gcr.io/oss-fuzz-base/base-builder
+RUN apt-get update && apt-get install -y make autoconf automake libtool libdb-dev
+RUN git clone --depth=1 https://github.com/vdukhovni/postfix Dvpwa
 COPY . $SRC/Dvpwa
 WORKDIR Dvpwa
-COPY .clusterfuzzlite/build.sh $SRC/
-
-RUN pip3 install --upgrade pip
-RUN pip3 install lz4 --force
-RUN pip3 install idna --force
-RUN pip3 install atheris --force
+COPY build.sh $SRC/
+COPY *.c $SRC/
